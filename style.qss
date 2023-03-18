@@ -1,0 +1,130 @@
+/** Fondo */
+
+QFrame#fr_fondo {
+    background: rgb(0, 62, 68);
+    border: 5px solid rgb(85, 255, 255);
+    border-radius: 30px;
+}
+
+/** Combobox */
+
+QComboBox{
+    font: 15px arial;
+    color: #55ffff;
+    background-color: rgba(27, 29, 35, .5);
+    border-radius: 10px;
+    border: 2px solid rgb(33, 37, 43);
+    padding: 5px;
+}
+QComboBox:hover{
+    border: 2px solid rgb(64, 71, 88);
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 7px; 
+    
+    border-left-width: 3px;
+    border-left-color: rgba(39, 44, 54, 150);
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;    
+
+    background-position: center;
+    background-repeat: no-reperat;
+}
+
+QComboBox QAbstractItemView {
+    color: rgba(85, 255, 238, 0.8);    
+    background-color: rgb(33, 37, 43);
+    padding: 10px;
+    selection-background-color: rgb(39, 44, 54);
+}
+
+/** Labels */
+
+QLabel#lbl_bienvenida {
+    font: 42px arial;
+    color: rgb(82, 245, 245);
+}
+
+QLabel#lbl_usuario, QLabel#lbl_clave {
+    font: 24px arial;
+    color: rgb(74, 221, 221);
+}
+
+QLabel#lbl_alerta {
+    font: 22px arial;
+    color: rgb(255, 80, 83);
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 20px;
+}
+
+/** QLineEdit */
+
+QLineEdit{
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(71, 213, 213);
+    font-family: arial;
+    font-size: 18px;
+    color: rgb(107, 255, 211);
+}
+
+/** QPushButton */
+
+QPushButton#btn_azar, QPushButton#btn_txtB, QPushButton#btn_ctB {
+    font: 18px arial;
+    color: rgb(5, 255, 184);
+    border: 2px solid rgb(5, 255, 184);
+    border-radius: 10px;
+}
+
+QPushButton#btn_azar:hover, QPushButton#btn_txtB:hover, QPushButton#btn_ctB:hover {
+    background: rgba(5, 255, 184, .3);
+}
+
+QPushButton#btn_azar:pressed {
+    padding-bottom: 10px;
+}
+
+QPushButton#btn_txtB:pressed {
+    padding-right: 10px;
+}
+
+QPushButton#btn_ctB:pressed {
+    padding-left: 10px;
+}
+
+QPushButton#btn_continuar {
+    font: 17px arial;
+    color: rgb(116, 255, 204);
+    border: 2px solid rgb(116, 255, 204);
+    border-radius: 10px;
+}
+
+QPushButton#btn_continuar:hover {
+    background: rgb(116, 255, 204);
+    color: rgb(0, 62, 68);
+}
+
+QPushButton#btn_continuar:pressed {
+    padding-left: 10px;
+}
+
+/** QTextEdit */
+
+QTextEdit {
+    font-size: 20px;
+    background-color: rgba(0, 255, 195, 0.29);
+    color: rgba(0, 255, 195, 0.8);
+    border: 2px solid rgba(0, 255, 195, 0.29);
+    border-radius: 15px;
+}
+
+QTextEdit:hover {
+    border: 2px solid rgba(0, 255, 195, 0.8);
+}
+
+/** Author: Francisco Velez */

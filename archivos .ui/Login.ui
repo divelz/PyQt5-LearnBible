@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>460</width>
+    <height>340</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Login</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Fondo */
+
+QFrame#fr_fondo {
+	background: rgb(0, 62, 68);
+	border: 5px solid rgb(85, 255, 255);
+	border-radius: 30px;
+}
+
+/* Combobox */
+
+QComboBox{
+    font: 15px arial;
+    color: #55ffff;
+	background-color: rgba(27, 29, 35, .5);
+	border-radius: 10px;
+	border: 2px solid rgb(33, 37, 43);
+	padding: 5px;
+}
+QComboBox:hover{
+	border: 2px solid rgb(64, 71, 88);
+}
+
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 7px; 
+	
+    border-left-width: 3px;
+	border-left-color: rgba(39, 44, 54, 150);
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;	
+
+    background-position: center;
+	background-repeat: no-reperat;
+}
+
+QComboBox QAbstractItemView {
+	color: rgba(85, 255, 238, 0.8);	
+	background-color: rgb(33, 37, 43);
+	padding: 10px;
+	selection-background-color: rgb(39, 44, 54);
+}
+
+/* Labels */
+
+QLabel#lbl_bienvenida {
+	font: 42px arial;
+	color: rgb(82, 245, 245);
+}
+
+QLabel#lbl_usuario, QLabel#lbl_clave {
+	font: 24px arial;
+	color: rgb(74, 221, 221);
+}
+
+QLabel#lbl_alerta {
+	font: 22px arial;
+	color: rgb(255, 80, 83);
+	border: 1px solid rgba(255, 255, 255, .15);
+	border-radius: 20px;
+/*rgb(0, 204, 0)*/
+}
+
+/* QLineEdit */
+
+QLineEdit{
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid rgb(71, 213, 213);
+	font-family: arial;
+	font-size: 18px;
+	color: rgb(107, 255, 211);
+}
+
+/* QPushButton */
+
+QPushButton#btn_continuar {
+	font: 17px arial;
+	color: rgb(116, 255, 204);
+	border: 2px solid rgb(116, 255, 204);
+	border-radius: 10px;
+}
+
+QPushButton#btn_continuar:hover {
+	background: rgb(116, 255, 204);
+	color: rgb(0, 62, 68);
+}
+
+QPushButton#btn_continuar:pressed {
+	padding-left: 10px;
+}
+
+/** Author: Francisco Velez */
+</string>
+  </property>
+  <widget class="QFrame" name="fr_fondo">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>441</width>
+     <height>321</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QComboBox" name="cb_menu">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>111</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Login</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Crear Cuenta</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Author</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Salir</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="lbl_bienvenida">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>30</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Bienvenidos</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_usuario">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nombre de usuario: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_clave">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>170</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Clave:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lbl_alerta">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>250</y>
+      <width>371</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Error: Clave no valido.</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_usuario">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>100</y>
+      <width>140</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>15</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="le_clave">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>170</y>
+      <width>140</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>13</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_continuar">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>180</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Continuar</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
