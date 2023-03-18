@@ -1,37 +1,50 @@
+# PyQt5-LearnBible
+Project #3 with Python - PyQt5. Uses the camera resource.
 
-> Nota: El programa utiliza como lenguaje verbal el español.
+> Note: The program uses Spanish as the verbal language.
 
-al iniciar el programa por el archivo __main__.py lo primero que 
-aparece es la ventana del login para inciar seccion, le damos click 
-en menu de arriba y seleccionamos la opcion de crear cuenta, al crear
-la cuenta con los dactos que colocamos iniciamos seccion.
+when starting the program by the file __main__.py the first thing that
+The login window appears to start the section, we click on it
+in the menu above and select the option to create an account, when creating
+the account with the data that we place we start section.
 
-Tambien en el submenu del login nos permite ver el nombre del author, 
-y la opcion de salir.
+Also in the login submenu it allows us to see the name of the author,
+and the option to exit.
 
-En cualquier seccion puedes mover la ventana con el mouse haciendo 
-doble click y arrastrandos.
+In any section you can move the window with the mouse doing
+double click and drag.
 
-Y en el Dado caso de querer tener presentes la opciones de minimizar 
-y cerrar puedes dar (alt + Enter) en windows.
+And in the Given case of wanting to have presents the options to minimize
+and close you can give (alt + Enter) in windows.
 
-Al iniciar seccion pasa a la seccion de modos en el cual puedes 
-selecionar 3 modos: Textos Biblicos, Citas Biblicas y al azar ( la 
-ultima es para elegir al azar), y hay una opcion para poder cerrar la
-ventana.
+When you start the section, go to the modes section in which you can
+select 3 modes: Biblical Texts, Biblical Quotes and random (the
+last one is to be chosen at random), and there is an option to be able to close the
+window.
 
-Al seleccionar el modo pasa a la seccion de Ventana principal en el 
-cual esta alli multiples funciones:
+Selecting the mode goes to the Main Window section in the
+which is there multiple functions:
 
-* Boton Verificar: Verifica la respuesta. 
+* Verify button: Verify the answer.
 
-Opciones del menu en Ventana Pricipal:
+Main Window menu options:
 
-* Textos Biblicos: ?.
-* Citas Biblicas: ?.
-* Estadistica: ?.
+* Biblical texts: ?.
+* Scripture quotations: ?.
+* Statistics: ?.
 
-* Author: Muestra el Nombre del author (Creador del programa).
-* Cerrar Seccion: Cierra la Seccion y devuelve a la ventana login.
-* Salir: Cierra la ventana.
+* Author: Shows the Name of the author (Creator of the program).
+* Close Section: Closes the Section and returns to the login window.
+* Exit: Close the window.
 
+**Image 1**
+
+![Image1](./Image1.png)
+
+**Image 2**
+
+![Image2](./Image2.png)
+
+**Best regard !!!**
+
+<cite>Author: Francisco Velez</cite>
