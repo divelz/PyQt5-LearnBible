@@ -1,7 +1,6 @@
 import json
 
 info = {
-    'Titulo': 'Aprender',
     'Name': 'name',
     'Clave': 'clave',
 
@@ -12,14 +11,12 @@ info = {
     'RachaCorrectasMaxima': 0,
 
     'Seccion': 'Cerrado',
-    'ModoDefault': 'None',
-
     'Author': 'Francisco J. Velez O.'
 }
 
 #* *************** *************** Funciones *************** *************** *#
 
-def rescribir(name_Arch='./Usuarios/name.json', rs=["", ''], different=False): 
+def rescribir(name_Arch='./Users/name.json', rs=["", ''], different=False): 
     file = ''
     if different: file = rs
 
@@ -30,7 +27,7 @@ def rescribir(name_Arch='./Usuarios/name.json', rs=["", ''], different=False):
     with open(name_Arch, 'w') as f: 
         f.write(json.dumps(file, indent=4))
 
-def lectura(name_Arch='./Usuarios/name.json'): 
+def lectura(name_Arch='./Users/name.json'): 
     try:
         # Abre el archivo .agenda de modo lectura
         with open(name_Arch, 'rb') as file_read:
@@ -53,7 +50,7 @@ def formatear(txt=''):
 
 #* Obtiene la informacion del ultimo usuario
 def name_text():
-    name = './Usuarios/'
+    name = './Users/'
     name += lectura('./Data/LastUser.json')['Usuario'].replace(' ', '_')
     name += '.json'
 
@@ -69,17 +66,13 @@ def seccion(modo='abierta'):
     else: text["Seccion"] = 'Cerrado'
 
     rescribir(name, text, True)
-   
-# def modoDefault(opc=''):
-#     name, text = name_text()
 
-#     c = encontrar(text, '<ModoDefault>', '</ModoDefault>')
-#     varText = c.replace(c, opc)
+#* Obtiene un numero segun los valores
+def porcentajes(longX=[2, 10], vlrMaximo=200, vlrMinimo=150):
+    porcentaje_ = round(vlrMinimo / vlrMaximo, 2) 
+    msg = longX[1] * porcentaje_
 
-#     if c == 'A':
-#         c = '<ModoDefault> A </ModoDefault>'
-#         varText = c.replace('A', opc)
-
-#     rescribir(name, text.replace(c, varText))
+    if msg < longX[0]: msg = longX[0]
+    return int(msg)
 
 #* Author: Francisco Velez

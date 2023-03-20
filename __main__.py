@@ -2,7 +2,8 @@
 
 #* Liberias Nesesarias
 from functions_ import (
-    rescribir, lectura, seccion, formatear, sonIguales
+    rescribir, lectura, seccion, formatear, 
+    sonIguales, porcentajes
 )
 
 from Login import Ui_Form, QtWidgets, QtCore, QtGui
@@ -74,6 +75,26 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
         self.modoAprender = ''
         self.modo = 'login'
 
+        self.infoUser_ = lectura('./Data/LastUser.json')
+        name = self.infoUser_['Usuario'].replace(' ', '_')
+
+        self.User_ = lectura(f'./Users/{name}.json')
+
+        self.rCorrectas = self.User_['RachaCorrectas']
+        self.rCorrectasM = self.User_['RachaCorrectasMaxima']
+
+        if self.User_['Seccion'] == 'Abierto':
+                self.ui.lbl_alerta.setStyleSheet('color: rgb(82, 245, 245);')
+                
+                self.runHaciaDelante(
+                    self.ui.lbl_alerta, 'Seccion Abierta...', time_=50
+                )
+
+                self.contSA = 0
+                self.timerSA = QtCore.QTimer()
+                self.timerSA.timeout.connect(self.seccionAbierta)
+                self.timerSA.start(100)
+
         self.ui.cb_menu1.activated.connect(self.func_menu1)
         self.ui.cb_menu2.activated.connect(self.func_menu2)
         self.ui.btn_continuar.clicked.connect(self.func_continuar)
@@ -98,6 +119,16 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
                     event.accept()
         except: pass      
     
+    # ************ ************ Seccion Abierta ************ ************ #
+    def seccionAbierta(self):
+        self.contSA += 10
+
+        if self.contSA >= 200:
+            self.ui.le_usuario.setText(self.User_['Name'])
+            self.ui.le_clave.setText(self.User_['Clave'])
+            self.func_continuar()
+            self.timerSA.stop()
+
     # ********* ********* Funciones del boton continuar ********* ********* #
     def func_continuar(self): 
         if self.opc_btn_cont == 'cerrar':
@@ -149,9 +180,23 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
                     self.resize(460, 340)
                 )
             )
-            
-        elif self.opc_btn_cont == 'verificar':
 
+        elif self.opc_btn_cont == 'siguiente':
+            self.ui.btn_continuar.setText('')
+            self.ui.lbl_alerta.setText('')
+            
+            def function001_():
+                self.firstAprender = True
+                self.aplicarModos()
+
+            self.runHaciaDelante(
+                self.ui.btn_continuar, 'Verificar',
+                function001_, 100
+            )
+            
+            self.opc_btn_cont = 'verificar'
+
+        elif self.opc_btn_cont == 'verificar':
             if self.modoAprender == 'txtb': 
                 txt = self.ui.txte_txt.toPlainText()
                 txt2 = self.infor[f'Texto{self.numOpc}']['Texto']
@@ -160,11 +205,16 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
                     self.ui.lbl_alerta.setStyleSheet('color: rgb(0, 204, 0);')
                     self.ui.lbl_alerta.setText('Respuesta Correcta')
                     self.User_['Correctas'] += 5 
+                    self.User_['RachaCorrectas'] += 5
+
+                    if self.User_['RachaCorrectas'] >= self.User_['RachaCorrectasMaxima']:
+                        self.User_['RachaCorrectasMaxima'] = self.User_['RachaCorrectas']
 
                 else:
                     self.ui.lbl_alerta.setStyleSheet('color: rgb(255, 80, 83);')
                     self.ui.lbl_alerta.setText('Respuesta Incorrecta')
                     self.User_['Incorrectas'] -= 5 
+                    self.User_['RachaCorrectas'] = 0
 
             if self.modoAprender == 'ctb':
                 ct = self.ui.le_usuario.text()
@@ -174,18 +224,28 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
                     self.ui.lbl_alerta.setStyleSheet('color: rgb(0, 204, 0);')
                     self.ui.lbl_alerta.setText('Respuesta Correcta')
                     self.User_['Correctas'] += 5 
+                    self.User_['RachaCorrectas'] += 5
+
+                    if self.User_['RachaCorrectas'] >= self.User_['RachaCorrectasMaxima']:
+                        self.User_['RachaCorrectasMaxima'] = self.User_['RachaCorrectas']
 
                 else:
                     self.ui.lbl_alerta.setStyleSheet('color: rgb(255, 80, 83);')
                     self.ui.lbl_alerta.setText('Respuesta Incorrecta')
                     self.User_['Incorrectas'] -= 5 
-                
-                n = self.User_['Name'].replace(' ', '_')
-                rescribir(f'./Usuarios/{n}.json', self.User_, True)
+                    self.User_['RachaCorrectas'] = 0
+            
+            self.runHaciaDelante(
+                self.ui.btn_continuar, 'Siguiente', time_=100
+            )
+
+            self.opc_btn_cont = 'siguiente'
+            n = self.User_['Name'].replace(' ', '_')
+            rescribir(f'./Users/{n}.json', self.User_, True)
 
         elif self.modo == 'login': 
             name = self.ui.le_usuario.text().strip().replace(' ', '_')
-            nameA = f'./Usuarios/{name}.json'
+            nameA = f'./Users/{name}.json'
             
             if name == '':
                 self.ui.lbl_alerta.setStyleSheet('color: rgb(255, 80, 83);')
@@ -278,8 +338,8 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
             self.ui.lbl_alerta.setText('Cuenta Creada.')
             name = name.replace(' ', '_')
 
-            rescribir(f'./Usuarios/{name}.json', ['Name', name])
-            rescribir(f'./Usuarios/{name}.json', ['Clave', clave])
+            rescribir(f'./Users/{name}.json', ['Name', name])
+            rescribir(f'./Users/{name}.json', ['Clave', clave])
 
     # ******* ******* Funcion del Menu del login ******* ******* #
     def func_menu1(self): 
@@ -353,7 +413,7 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
 
         if opc == 'estadistica':
             n = self.User_['Name'].replace(' ', '_')
-            self.User_ = lectura(f'./Usuarios/{n}.json')
+            self.User_ = lectura(f'./Users/{n}.json')
             ga_, pe_ = self.User_['Correctas'], self.User_['Incorrectas']
             rm_, ra_ = self.User_['RachaCorrectasMaxima'], self.User_['RachaCorrectas']
 
@@ -382,6 +442,25 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
             self.ui.lbl_alerta.setGeometry(-330, 210, 221, 121)
             self.resize(540, 390)
 
+            self.ui.lbl_progress1.setGeometry(250, 95, 20, 20)
+            self.ui.lbl_progress2.setGeometry(250, 155, 20, 20)
+
+            def progress():
+                n = self.User_['Name'].replace(' ', '_')
+                self.User_ = lectura(f'./Users/{n}.json')
+                ga_, pe_ = self.User_['Correctas'], -(self.User_['Incorrectas'])
+
+                if ga_ >= pe_: 
+                    pe_ = porcentajes([20, 230], ga_, pe_)
+                    ga_ = 230
+
+                else: 
+                    ga_ = porcentajes([20, 230], pe_, ga_)
+                    pe_ = 230
+                
+                self.ui.lbl_progress1.setGeometry(250, 95, ga_, 20)
+                self.ui.lbl_progress2.setGeometry(250, 155, pe_, 20)
+                
             self.run_procesos(
                 lambda: self.mover(self.ui.cb_menu2, [-220, 'x'], 5),
                 lambda: self.run_geometry_(self.ui.fr_fondo, [370, 'height'], 10),
@@ -400,8 +479,7 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
                 ),
 
                 lambda: (
-                    self.ui.lbl_progress1.setGeometry(250, 95, 211, 20),
-                    self.ui.lbl_progress2.setGeometry(250, 155, 151, 21),
+                    progress(), 
                     self.ui.lbl_rachaM.setGeometry(270, 210, 220, 30),
                     self.ui.lbl_rachaA.setGeometry(270, 270, 220, 30),
                 
@@ -411,7 +489,7 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
 
                     self.ui.lbl_alerta.setText(
                         ' Respuesta: \n Correcta +5 puntos, \n Incorrecta -5 puntos.'
-                    )
+                    ),
                 )
             )
             
@@ -434,6 +512,7 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
             self.ui.le_usuario.setEnabled(True)
             self.ui.le_usuario.setText('')
             self.opc_btn_cont = 'normal'
+            seccion('cerrada')
 
             self.run_procesos(
                 lambda: self.mover(
@@ -477,12 +556,14 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
     # ******* ******* Funciones de los botones de Modos ******* ******* #
     def func_modos(self, modo=''):
         self.setWindowTitle('Ventana Principal - Memorizando la Biblia')
-        self.ui.cb_menu2.setCurrentIndex(0)
         self.ui.le_usuario.setMaxLength(20)
         
         self.modoMActive = True
         self.modoAprender = modo
-
+        
+        if self.modoAprender == 'txtb': self.ui.cb_menu2.setCurrentIndex(0)
+        else: self.ui.cb_menu2.setCurrentIndex(1)
+        
         def activeFalse(): self.modoMActive = False
 
         self.ui.lbl_alerta.setText('')
@@ -537,6 +618,7 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
         def ActiveAnimationFalse(): self.isActiveAnimation = False
 
         if self.modoAprender == 'az': 
+            self.firstAprender = True
             self.modoAprender = random.choice(['txtb', 'ctb'])
         
         self.infor = lectura('./Data/textosBiblico.json')
@@ -583,7 +665,7 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
     # ******* ******* Manejo de procesos de varias animaciones ******* ******* #
     def run_procesos(self, *args):
         self.activeProces = False
-        it = self.iter_proces(args)
+        it = self.iter_process(args)
 
         self.timerM = QtCore.QTimer()
         self.timerM.timeout.connect(lambda: self.procesos(it))
@@ -596,7 +678,7 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
             try: next(iterador)
             except StopIteration: self.timerM.stop()
 
-    def iter_proces(self, args):
+    def iter_process(self, args):
         for x in args: yield x()
 
     # ******* ******* Mover Objectos en una sola cordenada ******* ******* #
@@ -635,12 +717,12 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
             objecto01.setGeometry(x_ + n, y_, width, height)
 
     # ******* ******* Cambiar Tamaño en una sola cordenada ******* ******* #
-    def run_geometry_(self, objecto01=None, opc=[0, 'height/width'], time_=150, func_=False):
+    def run_geometry_(self, objecto01=None, opc=[0, 'height/width'], time_=150, func_=False, different=False):
         self.timer01 = QtCore.QTimer()
-        self.timer01.timeout.connect(lambda: self.func_geometry_(objecto01, opc, func_))
+        self.timer01.timeout.connect(lambda: self.func_geometry_(objecto01, opc, func_, different))
         self.timer01.start(time_)
 
-    def func_geometry_(self, objecto01=None, opc=[0, 'height/width'], func_=False):
+    def func_geometry_(self, objecto01=None, opc=[0, 'height/width'], func_=False, different=False):
         height = objecto01.geometry().height()
         width = objecto01.geometry().width()
         x_ = objecto01.geometry().x()
@@ -651,25 +733,26 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
             if opc[0] > height: n = +1 
 
             elif opc[0] == height: 
-                if func_ != False: func_()
                 self.activeProces = False
+                if func_ != False: func_()
                 self.timer01.stop()
 
             else: n = -1
-            objecto01.resize(width, height + n)
-            # objecto01.setGeometry(x_, y_, width, height + n)
+
+            if not(different): objecto01.resize(width, height + n)
+            else: objecto01.setGeometry(x_, y_, width, height + n)
 
         if opc[1] == 'width':
             if opc[0] > width: n = +1 
             
             elif opc[0] == width: 
-                if func_ != False: func_() 
                 self.activeProces = False
+                if func_ != False: func_() 
                 self.timer01.stop()
             
             else: n = -1
-            objecto01.resize(width + n, height)
-            # objecto01.setGeometry(x_, y_, width + n, height)
+            if not(different): objecto01.resize(width + n, height)
+            else: objecto01.setGeometry(x_, y_, width + n, height)
 
     # ******* ******* Animacion del titulo al entrar a Modos ******* ******* #
     def func_lbl_titulo(self):
@@ -723,11 +806,10 @@ class MainApp(QtWidgets.QMainWindow, Escritura):
             )
 
             self.timerActive = False
-            
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv) 
-    app.setWindowIcon(QtGui.QIcon('./data/QuickAccess.ico'))
+    app.setWindowIcon(QtGui.QIcon('./Data/QuickAccess.ico'))
     window = MainApp() 
     window.show() 
     sys.exit(app.exec_())

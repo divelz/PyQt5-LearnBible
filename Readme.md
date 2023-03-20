@@ -18,18 +18,18 @@ double click and drag.
 And in the Given case of wanting to have presents the options to minimize
 and close you can give (alt + Enter) in windows.
 
-**Imagen de la seccion login/crear cuenta**
+**Imagen de la Seccion Login/Crear Cuenta**
 
-![Image1](./Image1.png)
+![Image1](./Data/Image1.png)
 
 When you start the section, go to the modes section in which you can
 select 3 modes: Biblical Texts, Biblical Quotes and random (the
 last one is to be chosen at random), and there is an option to be able to close the
 window.
 
-**Imagen de la seccion modos**
+**Imagen de la Seccion Modos**
 
-![Image2](./Image2.png)
+![Image2](./Data/Image2.png)
 
 Selecting the mode goes to the Main Window section in the
 which is there multiple functions:
@@ -52,13 +52,13 @@ Main Window menu options:
 * Close Section: Closes the Section and returns to the login window.
 * Exit: Close the window.
 
-**Imagen de la principal**
+**Imagen de la Seccion Principal**
 
-![Image3](./Image3.png)
+![Image3](./Data/Image3.png)
 
 **Imagen de la Estadistica**
 
-![Image4](./Image4.png)
+![Image4](./Data/Image4.png)
 
 **Best regard !!!**
 

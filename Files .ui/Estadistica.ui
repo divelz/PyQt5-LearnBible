@@ -241,7 +241,7 @@ QTextEdit:hover {
      <rect>
       <x>250</x>
       <y>95</y>
-      <width>211</width>
+      <width>231</width>
       <height>20</height>
      </rect>
     </property>
@@ -254,7 +254,7 @@ QTextEdit:hover {
      <rect>
       <x>250</x>
       <y>155</y>
-      <width>151</width>
+      <width>21</width>
       <height>21</height>
      </rect>
     </property>

@@ -95,24 +95,20 @@ class Ui_Form(object):
         self.btn_continuar.setObjectName('btn_continuar')
 
         self.lbl_progress1 = QtWidgets.QLabel(self.fr_fondo)
-        # self.lbl_progress1.setGeometry(QtCore.QRect(250, 95, 211, 20))
         self.lbl_progress1.setGeometry(QtCore.QRect(650, 95, 211, 20))
         self.lbl_progress1.setText("")
         self.lbl_progress1.setObjectName("lbl_progress1")
 
         self.lbl_progress2 = QtWidgets.QLabel(self.fr_fondo)
-        # self.lbl_progress2.setGeometry(QtCore.QRect(250, 155, 151, 21))
         self.lbl_progress2.setGeometry(QtCore.QRect(650, 155, 151, 21))
         self.lbl_progress2.setText("")
         self.lbl_progress2.setObjectName("lbl_progress2")
 
         self.lbl_rachaM = QtWidgets.QLabel(self.fr_fondo)
-        # self.lbl_rachaM.setGeometry(QtCore.QRect(270, 210, 221, 30))
         self.lbl_rachaM.setGeometry(QtCore.QRect(670, 210, 221, 30))
         self.lbl_rachaM.setObjectName("lbl_rachaM")
 
         self.lbl_rachaA = QtWidgets.QLabel(self.fr_fondo)
-        # self.lbl_rachaA.setGeometry(QtCore.QRect(270, 270, 221, 30))
         self.lbl_rachaA.setGeometry(QtCore.QRect(670, 270, 221, 30))
         self.lbl_rachaA.setObjectName("lbl_rachaA")
 
