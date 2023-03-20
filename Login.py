@@ -16,13 +16,13 @@ class Ui_Form(object):
         Form.setStyleSheet(self.__style__())
 
         self.fr_fondo = QtWidgets.QFrame(Form)
-        self.fr_fondo.setGeometry(QtCore.QRect(10, 10, 441, 321))
+        self.fr_fondo.setGeometry(QtCore.QRect(10, 10, 440, 320))
         self.fr_fondo.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.fr_fondo.setFrameShadow(QtWidgets.QFrame.Raised)
         self.fr_fondo.setObjectName('fr_fondo')
 
         self.cb_menu1 = QtWidgets.QComboBox(self.fr_fondo)
-        self.cb_menu1.setGeometry(QtCore.QRect(20, 30, 111, 35))
+        self.cb_menu1.setGeometry(QtCore.QRect(20, 30, 110, 35))
         self.cb_menu1.setObjectName('cb_menu1')
 
         self.cb_menu1.addItem('')
@@ -93,6 +93,28 @@ class Ui_Form(object):
         self.btn_continuar = QtWidgets.QPushButton(self.fr_fondo)
         self.btn_continuar.setGeometry(QtCore.QRect(290, 180, 111, 31))
         self.btn_continuar.setObjectName('btn_continuar')
+
+        self.lbl_progress1 = QtWidgets.QLabel(self.fr_fondo)
+        # self.lbl_progress1.setGeometry(QtCore.QRect(250, 95, 211, 20))
+        self.lbl_progress1.setGeometry(QtCore.QRect(650, 95, 211, 20))
+        self.lbl_progress1.setText("")
+        self.lbl_progress1.setObjectName("lbl_progress1")
+
+        self.lbl_progress2 = QtWidgets.QLabel(self.fr_fondo)
+        # self.lbl_progress2.setGeometry(QtCore.QRect(250, 155, 151, 21))
+        self.lbl_progress2.setGeometry(QtCore.QRect(650, 155, 151, 21))
+        self.lbl_progress2.setText("")
+        self.lbl_progress2.setObjectName("lbl_progress2")
+
+        self.lbl_rachaM = QtWidgets.QLabel(self.fr_fondo)
+        # self.lbl_rachaM.setGeometry(QtCore.QRect(270, 210, 221, 30))
+        self.lbl_rachaM.setGeometry(QtCore.QRect(670, 210, 221, 30))
+        self.lbl_rachaM.setObjectName("lbl_rachaM")
+
+        self.lbl_rachaA = QtWidgets.QLabel(self.fr_fondo)
+        # self.lbl_rachaA.setGeometry(QtCore.QRect(270, 270, 221, 30))
+        self.lbl_rachaA.setGeometry(QtCore.QRect(670, 270, 221, 30))
+        self.lbl_rachaA.setObjectName("lbl_rachaA")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)

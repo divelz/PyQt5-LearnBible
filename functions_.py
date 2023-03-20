@@ -5,11 +5,11 @@ info = {
     'Name': 'name',
     'Clave': 'clave',
 
-    'Ganadas': 0,
-    'Perdidas': 0,
+    'Correctas': 0,
+    'Incorrectas': 0,
 
-    'RachaGanadas': 0,
-    'RachaGanadasMaxima': 0,
+    'RachaCorrectas': 0,
+    'RachaCorrectasMaxima': 0,
 
     'Seccion': 'Cerrado',
     'ModoDefault': 'None',

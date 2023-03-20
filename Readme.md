@@ -1,5 +1,6 @@
 # PyQt5-LearnBible
-Project #3 with Python - PyQt5. Uses the camera resource.
+Project #4 with Python - PyQt5. Learn and Memorize the Bible with a 
+login included.
 
 > Note: The program uses Spanish as the verbal language.
 
@@ -17,10 +18,18 @@ double click and drag.
 And in the Given case of wanting to have presents the options to minimize
 and close you can give (alt + Enter) in windows.
 
+**Imagen de la seccion login/crear cuenta**
+
+![Image1](./Image1.png)
+
 When you start the section, go to the modes section in which you can
 select 3 modes: Biblical Texts, Biblical Quotes and random (the
 last one is to be chosen at random), and there is an option to be able to close the
 window.
+
+**Imagen de la seccion modos**
+
+![Image2](./Image2.png)
 
 Selecting the mode goes to the Main Window section in the
 which is there multiple functions:
@@ -29,21 +38,27 @@ which is there multiple functions:
 
 Main Window menu options:
 
-* Biblical texts: ?.
-* Scripture quotations: ?.
-* Statistics: ?.
+* Biblical texts: Modo de juego en el que te muestra la cita biblica
+  y uno digita el texto Biblico.
+
+* Scripture quotations: Modo de juego en el que te muestra el texto Biblico
+  y uno digita la cita biblica.
+
+* Statistics: Seccion para ver la informacion de la cuenta,
+  el nombre de usuario, ver los puntos de respuesta correcta y incorrecta
+  la racha maxima y la racha actual de respuestas correctas, entre otros.
 
 * Author: Shows the Name of the author (Creator of the program).
 * Close Section: Closes the Section and returns to the login window.
 * Exit: Close the window.
 
-**Image 1**
+**Imagen de la principal**
 
-![Image1](./Image1.png)
+![Image3](./Image3.png)
 
-**Image 2**
+**Imagen de la Estadistica**
 
-![Image2](./Image2.png)
+![Image4](./Image4.png)
 
 **Best regard !!!**
 
